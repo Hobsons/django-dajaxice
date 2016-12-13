@@ -32,4 +32,4 @@ def dajaxice_js_import(context, csrf=True):
                     "and render your views using a RequestContext.")
 
     url = staticfiles_storage.url('dajaxice/dajaxice.core.js')
-    return '<script src="%s" type="text/javascript" charset="utf-8"></script>' % url
+    return url

@@ -1,6 +1,6 @@
 import logging
 
-from django.utils.importlib import import_module
+from importlib import import_module
 
 log = logging.getLogger('dajaxice')
 
@@ -81,7 +81,7 @@ class Dajaxice(object):
 
     def is_callable(self, name, method):
         """ Return if the function callable or not. """
-        return name in self._registry and self._registry[name].method == method
+        return name in self._registry
 
     def clean_method(self, method):
         """ Clean the http method. """

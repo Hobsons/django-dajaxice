@@ -54,9 +54,7 @@ class DajaxiceRequest(View):
                 if settings.DEBUG:
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
-            if django.get_version() >= '1.7':
-                return HttpResponse(response, content_type="application/x-json")
-            else:
-                return HttpResponse(response, mimetype="application/x-json")
+
+            return HttpResponse(response, content_type="application/x-json")
         else:
             raise FunctionNotCallableError(name)
