@@ -1,5 +1,6 @@
 import logging
-import django
+import traceback
+import sys
 from django.conf import settings
 import json
 from django.views.generic.base import View
@@ -51,6 +52,8 @@ class DajaxiceRequest(View):
             try:
                 response = function.call(request, **data)
             except Exception:
+                trace = '\n'.join(traceback.format_exception(*sys.exc_info()))
+                log.error(trace)
                 if settings.DEBUG:
                     raise
                 response = dajaxice_config.DAJAXICE_EXCEPTION
