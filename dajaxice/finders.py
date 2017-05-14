@@ -67,9 +67,8 @@ class DajaxiceStorage(VirtualStorage):
 
         dajaxice_autodiscover()
 
-        return get_template(os.path.join('dajaxice', 'dajaxice.core.js')).render({
-            'dajaxice_config': dajaxice_config
-        })
+        c = Context({'dajaxice_config': dajaxice_config})
+        return get_template(os.path.join('dajaxice', 'dajaxice.core.js')).render(c)
 
 
 class DajaxiceFinder(finders.BaseStorageFinder):
